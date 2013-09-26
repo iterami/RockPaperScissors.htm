@@ -43,4 +43,4 @@ window.onkeydown = function(e){
     }else if(key == 83){
         play(2)
     }
-}
+};
