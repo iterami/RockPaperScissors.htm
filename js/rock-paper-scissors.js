@@ -2,29 +2,35 @@ function play(selected){
     // generate a random number (0, 1, or 2)
     opponent_choice = Math.floor(Math.random() * 3);
 
+    // determine the result
+    if(selected == opponent_choice){
+        // result is a tie
+        result = 2;
+    }else if((selected == 0 && opponent_choice == 2)
+          || (selected == 1 && opponent_choice == 0)
+          || (selected == 2 && opponent_choice == 1)){
+        // result is a win
+        result = 1;
+    }else{
+        // result is a loss
+        result = 0;
+    }
+
     // display game information
     document.getElementById('result').innerHTML = 'You played <b>' + ['rock', 'paper', 'scissors'][selected]
         + '</b><br>Your opponent played <b>' + ['rock', 'paper', 'scissors'][opponent_choice]
-        + '</b><br><b>YOU ' + ['LOSE', 'WIN', 'TIE'][
-            /* if both players pick same option, game is a tie (2) */
-            selected == opponent_choice ? 2
-            : (
-                /* if player has the winning choice, player wins (1) */
-                (
-                    (selected == 0 && opponent_choice == 2)
-                 || (selected == 1 && opponent_choice == 0)
-                 || (selected == 2 && opponent_choice == 1)
-                ) ? 1
+        + '</b><br><b>YOU ' + ['LOSE', 'WIN', 'TIE'][result]
+        + '!</b>';
 
-                /* else computer wins (0) */
-                : 0
-              )
-            ]
-        + '!</b>'
+    // update loss/tie/win values
+    document.getElementById(['losses', 'wins', 'ties'][result]).innerHTML =
+        parseInt(document.getElementById(['losses', 'wins', 'ties'][result]).innerHTML)
+        + 1;
 }
 
 var key = 0;
 var opponent_choice = 0;
+var result = 0;
 var selected = 0;
 
 window.onkeydown = function(e){
