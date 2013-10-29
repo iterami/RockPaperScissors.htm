@@ -1,3 +1,7 @@
+function get(i){
+    return document.getElementById(i)
+}
+
 function play(selected){
     // generate a random number (0, 1, or 2)
     opponent_choice = Math.floor(Math.random() * 3);
@@ -17,15 +21,25 @@ function play(selected){
     }
 
     // display game information
-    document.getElementById('result').innerHTML = 'You played <b>' + ['rock', 'paper', 'scissors'][selected]
+    get('result').innerHTML = 'You played <b>' + ['rock', 'paper', 'scissors'][selected]
         + '</b><br>Your opponent played <b>' + ['rock', 'paper', 'scissors'][opponent_choice]
         + '</b><br><b>YOU ' + ['LOSE', 'WIN', 'TIE'][result]
         + '!</b>';
 
     // update loss/tie/win values
-    document.getElementById(['losses', 'wins', 'ties'][result]).innerHTML =
+    get(['losses', 'wins', 'ties'][result]).innerHTML =
         parseInt(document.getElementById(['losses', 'wins', 'ties'][result]).innerHTML)
         + 1;
+}
+
+function reset(){
+    if(confirm('Reset scores?')){
+        get('losses').innerHTML = 0;
+        get('ties').innerHTML = 0;
+        get('wins').innerHTML = 0;
+
+        get('result').innerHTML = '';
+    }
 }
 
 var key = 0;
