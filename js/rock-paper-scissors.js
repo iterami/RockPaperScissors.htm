@@ -1,5 +1,5 @@
 function get(i){
-    return document.getElementById(i)
+    return document.getElementById(i);
 }
 
 function play(selected){
@@ -53,14 +53,14 @@ window.onkeydown = function(e){
 
     // key == R, play Rock
     if(key == 82){
-        play(0)
+        play(0);
 
     // key == P, play Paper
     }else if(key == 80){
-        play(1)
+        play(1);
 
     // key == S, play Scissors
     }else if(key == 83){
-        play(2)
+        play(2);
     }
 };
