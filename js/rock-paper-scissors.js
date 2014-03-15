@@ -1,10 +1,6 @@
-function get(i){
-    return document.getElementById(i);
-}
-
 function play(selected){
     // fetch how many games player wants to play
-    repeat = parseInt(get('repeat').value);
+    repeat = parseInt(document.getElementById('repeat').value);
 
     if(repeat > 0){
         // loop through the games
@@ -19,8 +15,8 @@ function play(selected){
                 // result is a tie
                 result = 2;
             }else if((selected == 0 && opponent_choice == 2)
-                  || (selected == 1 && opponent_choice == 0)
-                  || (selected == 2 && opponent_choice == 1)){
+              || (selected == 1 && opponent_choice == 0)
+              || (selected == 2 && opponent_choice == 1)){
                 // result is a win
                 result = 1;
             }else{
@@ -29,31 +25,35 @@ function play(selected){
             }
 
             // update loss/tie/win values
-            get(['losses', 'wins', 'ties'][result]).innerHTML =
-                parseInt(document.getElementById(['losses', 'wins', 'ties'][result]).innerHTML)
-                + 1;
+            document.getElementById(['losses', 'wins', 'ties'][result]).innerHTML =
+              parseInt(document.getElementById(['losses', 'wins', 'ties'][result]).innerHTML)
+              + 1;
         }while(i--);
 
         // display game information, limiting information for multiple games played
-        get('result').innerHTML = 'You played <b>' + ['rock', 'paper', 'scissors'][selected]
-            + '</b> ' + repeat + ' times<br>'
-            + 'Your opponent played <b>' + (repeat > 1
-              ? 'lots of stuff'
-              : ['rock', 'paper', 'scissors'][opponent_choice])
-            + '</b><br><b>' + (repeat > 1
-              ? 'You probably won some of them!'
-              : 'YOU ' + ['LOSE', 'WIN', 'TIE'][result]
-            + '!</b>');
+        document.getElementById('result').innerHTML = 'You played <b>'
+          + ['rock', 'paper', 'scissors'][selected]
+          + '</b> ' + repeat + ' times<br>'
+          + 'Your opponent played <b>'
+          + (repeat > 1
+            ? 'lots of stuff'
+            : ['rock', 'paper', 'scissors'][opponent_choice]
+          )
+          + '</b><br><b>'
+          + (repeat > 1
+            ? 'You probably won some of them!'
+            : 'YOU ' + ['LOSE', 'WIN', 'TIE'][result] + '!</b>'
+          );
     }
 }
 
 function reset(){
     if(confirm('Reset scores?')){
-        get('losses').innerHTML = 0;
-        get('ties').innerHTML = 0;
-        get('wins').innerHTML = 0;
+        document.getElementById('losses').innerHTML = 0;
+        document.getElementById('ties').innerHTML = 0;
+        document.getElementById('wins').innerHTML = 0;
 
-        get('result').innerHTML = '';
+        document.getElementById('result').innerHTML = '';
     }
 }
 
