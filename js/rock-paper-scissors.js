@@ -3,8 +3,14 @@ function play(selected){
     repeat = parseInt(document.getElementById('repeat').value);
 
     if(repeat > 0){
+        temp_increases = [
+          0,
+          0,
+          0
+        ];
+
         // loop through the games
-        i = repeat;
+        i = repeat - 1;
 
         do{
             // generate a random number (0, 1, or 2)
@@ -14,21 +20,34 @@ function play(selected){
             if(selected == opponent_choice){
                 // result is a tie
                 result = 2;
+
             }else if((selected == 0 && opponent_choice == 2)
               || (selected == 1 && opponent_choice == 0)
               || (selected == 2 && opponent_choice == 1)){
                 // result is a win
                 result = 1;
+
             }else{
                 // result is a loss
                 result = 0;
             }
 
-            // update loss/tie/win values
-            document.getElementById(['losses', 'wins', 'ties'][result]).innerHTML =
-              parseInt(document.getElementById(['losses', 'wins', 'ties'][result]).innerHTML)
-              + 1;
+            // update loss/tie/win values, store in temporary array
+            temp_increases[result] += 1;
         }while(i--);
+
+        // update loss/tie/win innerHTMLs
+        document.getElementById('losses').innerHTML =
+          parseInt(document.getElementById('losses').innerHTML)
+          + temp_increases[0];
+
+        document.getElementById('wins').innerHTML =
+          parseInt(document.getElementById('wins').innerHTML)
+          + temp_increases[1];
+
+        document.getElementById('ties').innerHTML =
+          parseInt(document.getElementById('ties').innerHTML)
+          + temp_increases[2];
 
         // display game information, limiting information for multiple games played
         document.getElementById('result').innerHTML = 'You played <b>'
@@ -62,6 +81,7 @@ var opponent_choice = 0;
 var repeat = 0;
 var result = 0;
 var selected = 0;
+var temp_increases = [];
 
 window.onkeydown = function(e){
     key = window.event ? event : e;
