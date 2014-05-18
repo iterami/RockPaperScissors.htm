@@ -3,14 +3,14 @@ function play(selected){
     repeat = parseInt(document.getElementById('repeat').value);
 
     if(repeat > 0){
-        temp_increases = [
+        var temp_increases = [
           0,
           0,
           0
         ];
 
         // loop through the games
-        i = repeat - 1;
+        var loop_counter = repeat - 1;
 
         do{
             // generate a random number (0, 1, or 2)
@@ -34,7 +34,7 @@ function play(selected){
 
             // update loss/tie/win values, store in temporary array
             temp_increases[result] += 1;
-        }while(i--);
+        }while(loop_counter--);
 
         // update loss/tie/win innerHTMLs
         document.getElementById('losses').innerHTML =
@@ -81,7 +81,6 @@ var opponent_choice = 0;
 var repeat = 0;
 var result = 0;
 var selected = 0;
-var temp_increases = [];
 
 window.onkeydown = function(e){
     key = window.event ? event : e;
