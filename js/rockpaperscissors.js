@@ -70,13 +70,15 @@ function play(selected){
 }
 
 function reset(){
-    if(confirm('Reset scores?')){
-        document.getElementById('losses').innerHTML = 0;
-        document.getElementById('ties').innerHTML = 0;
-        document.getElementById('wins').innerHTML = 0;
-
-        document.getElementById('result').innerHTML = '';
+    if(!confirm('Reset scores?')){
+        return;
     }
+
+    document.getElementById('losses').innerHTML = 0;
+    document.getElementById('ties').innerHTML = 0;
+    document.getElementById('wins').innerHTML = 0;
+
+    document.getElementById('result').innerHTML = '';
 }
 
 var key = 0;
