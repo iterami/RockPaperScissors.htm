@@ -81,15 +81,13 @@ function reset(){
     document.getElementById('result').innerHTML = '';
 }
 
-var key = 0;
 var opponent_choice = 0;
 var repeat = 0;
 var result = 0;
 var selected = 0;
 
 window.onkeydown = function(e){
-    key = window.event ? event : e;
-    key = key.charCode ? key.charCode : key.keyCode;
+    var key = e.keyCode || e.which;
 
     // R: play rock.
     if(key == 82){
