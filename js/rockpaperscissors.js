@@ -6,7 +6,13 @@ function play(selected){
         return;
     }
 
-    var temp_increases = [
+    // Keep track of results.
+    var opponent_plays = [
+      0,
+      0,
+      0,
+    ];
+    var results = [
       0,
       0,
       0,
@@ -17,6 +23,7 @@ function play(selected){
     do{
         // Generate a random number (0, 1, or 2).
         opponent_choice = Math.floor(Math.random() * 3);
+        opponent_plays[opponent_choice] += 1;
 
         // Determine the result of the game.
         if(selected == opponent_choice){
@@ -35,38 +42,54 @@ function play(selected){
         }
 
         // Update loss/tie/win values and store them in a temporary array.
-        temp_increases[result] += 1;
+        results[result] += 1;
     }while(loop_counter--);
 
     // Update losses innerHTML.
     document.getElementById('losses').innerHTML =
       parseInt(document.getElementById('losses').innerHTML)
-      + temp_increases[0];
+      + results[0];
 
     // Update ties innerHTML.
     document.getElementById('ties').innerHTML =
       parseInt(document.getElementById('ties').innerHTML)
-      + temp_increases[2];
+      + results[2];
 
     // Update wins innerHTML.
     document.getElementById('wins').innerHTML =
       parseInt(document.getElementById('wins').innerHTML)
-      + temp_increases[1];
+      + results[1];
+
+    // Create result strings.
+    var paper = '<b>' + opponent_plays[1] + '</b> papers (';
+    var rock = '<b>' + opponent_plays[0] + '</b> rocks (';
+    var scissors = '<b>' + opponent_plays[2] + '</b> scissors (';
+
+    if(selected == 0){
+        paper += results[0] + ' losses)';
+        rock += results[2] + ' ties)';
+        scissors += results[1] + ' wins)';
+
+    }else if(selected == 1){
+        paper += results[2] + ' ties)';
+        rock += results[1] + ' wins)';
+        scissors += results[0] + ' losses)';
+
+    }else{
+        paper += results[1] + ' wins)';
+        rock += results[0] + ' losses)';
+        scissors += results[2] + ' ties)';
+    }
 
     // display game information, limiting information for multiple games played
-    document.getElementById('result').innerHTML = 'You played <b>'
+    document.getElementById('result').innerHTML = 'You played '
       + ['rock', 'paper', 'scissors',][selected]
-      + '</b> ' + repeat + ' times<br>'
-      + 'Your opponent played <b>'
-      + (repeat > 1
-        ? 'lots of stuff'
-        : ['rock', 'paper', 'scissors',][opponent_choice]
-      )
-      + '</b><br><b>'
-      + (repeat > 1
-        ? 'You probably won some of them!'
-        : 'YOU ' + ['LOSE', 'WIN', 'TIE',][result] + '!</b>'
-      );
+      + ' <b>' + repeat + '</b> times.<br>'
+      + 'Your opponent played:<ul>'
+        + '<li>' + rock
+        + '<li>' + paper
+        + '<li>' + scissors
+      + '</ul>';
 }
 
 function reset(){
