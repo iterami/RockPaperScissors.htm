@@ -93,7 +93,7 @@ function play(selected){
 }
 
 function reset(){
-    if(!confirm('Reset scores?')){
+    if(!window.confirm('Reset scores?')){
         return;
     }
 
