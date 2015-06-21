@@ -10,6 +10,9 @@ input{
     background: #000;
     color: #aaa;
 }
+input[type=button]{
+    cursor: pointer;
+}
 ul{
     margin: 0;
 }
