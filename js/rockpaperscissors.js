@@ -1,3 +1,5 @@
+'use strict';
+
 function play(selected){
     // Fetch how many games player wants to play.
     repeat = parseInt(document.getElementById('repeat').value);
