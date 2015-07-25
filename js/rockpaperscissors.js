@@ -28,13 +28,13 @@ function play(selected){
         opponent_plays[opponent_choice] += 1;
 
         // Determine the result of the game.
-        if(selected == opponent_choice){
+        if(selected === opponent_choice){
             // Result is a tie.
             result = 2;
 
-        }else if((selected == 0 && opponent_choice == 2)
-          || (selected == 1 && opponent_choice == 0)
-          || (selected == 2 && opponent_choice == 1)){
+        }else if((selected === 0 && opponent_choice === 2)
+          || (selected === 1 && opponent_choice === 0)
+          || (selected === 2 && opponent_choice === 1)){
             // Result is a win.
             result = 1;
 
@@ -67,12 +67,12 @@ function play(selected){
     var rock = '<b>' + opponent_plays[0] + '</b> rocks (';
     var scissors = '<b>' + opponent_plays[2] + '</b> scissors (';
 
-    if(selected == 0){
+    if(selected === 0){
         paper += results[0] + ' losses)';
         rock += results[2] + ' ties)';
         scissors += results[1] + ' wins)';
 
-    }else if(selected == 1){
+    }else if(selected === 1){
         paper += results[2] + ' ties)';
         rock += results[1] + ' wins)';
         scissors += results[0] + ' losses)';
@@ -115,15 +115,15 @@ window.onkeydown = function(e){
     var key = e.keyCode || e.which;
 
     // R: play rock.
-    if(key == 82){
+    if(key === 82){
         play(0);
 
     // P: play paper.
-    }else if(key == 80){
+    }else if(key === 80){
         play(1);
 
     // S: play scissors.
-    }else if(key == 83){
+    }else if(key === 83){
         play(2);
     }
 };
