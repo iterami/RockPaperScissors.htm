@@ -100,10 +100,9 @@ function reset(){
     }
 
     document.getElementById('losses').innerHTML = 0;
+    document.getElementById('result').innerHTML = '';
     document.getElementById('ties').innerHTML = 0;
     document.getElementById('wins').innerHTML = 0;
-
-    document.getElementById('result').innerHTML = '';
 }
 
 var opponent_choice = 0;
