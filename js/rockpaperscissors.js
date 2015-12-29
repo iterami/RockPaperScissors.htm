@@ -99,10 +99,15 @@ function reset(){
         return;
     }
 
-    document.getElementById('losses').innerHTML = 0;
-    document.getElementById('result').innerHTML = '';
-    document.getElementById('ties').innerHTML = 0;
-    document.getElementById('wins').innerHTML = 0;
+    var ids = {
+      'losses': 0,
+      'result': '',
+      'ties': 0,
+      'wins': 0,
+    };
+    for(var id in ids){
+        document.getElementById(id).innerHTML = ids[id];
+    }
 }
 
 var opponent_choice = 0;
