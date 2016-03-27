@@ -1,5 +1,5 @@
-RockPaperScissors.htm
----------------------
+iterami/RockPaperScissors.htm
+-----------------------------
 
 A web-based version of the classic game of Rock Paper Scissors.
 
