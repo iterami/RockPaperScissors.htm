@@ -2,7 +2,10 @@
 
 function play(selected){
     // Fetch how many games player wants to play.
-    repeat = parseInt(document.getElementById('repeat').value);
+    repeat = parseInt(
+      document.getElementById('repeat').value,
+      10
+    );
 
     if(repeat < 1){
         return;
@@ -49,18 +52,24 @@ function play(selected){
 
     // Update losses innerHTML.
     document.getElementById('losses').innerHTML =
-      parseInt(document.getElementById('losses').innerHTML)
-      + results[0];
+      parseInt(
+        document.getElementById('losses').innerHTML,
+        10
+      ) + results[0];
 
     // Update ties innerHTML.
     document.getElementById('ties').innerHTML =
-      parseInt(document.getElementById('ties').innerHTML)
-      + results[2];
+      parseInt(
+        document.getElementById('ties').innerHTML,
+        10
+      ) + results[2];
 
     // Update wins innerHTML.
     document.getElementById('wins').innerHTML =
-      parseInt(document.getElementById('wins').innerHTML)
-      + results[1];
+      parseInt(
+        document.getElementById('wins').innerHTML,
+        10
+      ) + results[1];
 
     // Create result strings.
     var paper = '<b>' + opponent_plays[1] + '</b> papers (';
