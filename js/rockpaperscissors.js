@@ -99,7 +99,7 @@ function play(selected){
       + 'Your opponent played:<br>'
         + rock + '<br>'
         + paper + '<br>'
-        + scissors + '<br>';
+        + scissors;
 }
 
 function reset(){
