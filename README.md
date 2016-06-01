@@ -10,3 +10,8 @@ Action        | Key
 Play Paper    | P
 Play Rock     | R
 Play Scissors | S
+
+---
+
+Requires:
+* [iterami/common](https://github.com/iterami/common)

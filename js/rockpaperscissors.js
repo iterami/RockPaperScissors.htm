@@ -96,11 +96,10 @@ function play(selected){
     document.getElementById('result').innerHTML = 'You played '
       + ['rock', 'paper', 'scissors',][selected]
       + ' <b>' + repeat + '</b> times.<br>'
-      + 'Your opponent played:<ul>'
-        + '<li>' + rock
-        + '<li>' + paper
-        + '<li>' + scissors
-      + '</ul>';
+      + 'Your opponent played:<br>'
+        + rock + '<br>'
+        + paper + '<br>'
+        + scissors + '<br>';
 }
 
 function reset(){
