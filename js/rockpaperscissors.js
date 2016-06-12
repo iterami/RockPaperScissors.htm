@@ -1,11 +1,16 @@
 'use strict';
 
+function percent(value, max){
+    return ((value / max) * 100).toFixed(2) + '%';
+}
+
 function play(selected){
     // Fetch how many games player wants to play.
-    repeat = parseInt(
+    var repeat = parseInt(
       document.getElementById('repeat').value,
       10
     );
+    total += repeat;
 
     if(repeat < 1){
         return;
@@ -26,6 +31,9 @@ function play(selected){
     // Loop through the games.
     var loop_counter = repeat - 1;
     do{
+        // Result is a loss by default.
+        var result = 0;
+
         // Generate a random number (0, 1, or 2).
         opponent_choice = Math.floor(Math.random() * 3);
         opponent_plays[opponent_choice] += 1;
@@ -40,36 +48,15 @@ function play(selected){
           || (selected === 2 && opponent_choice === 1)){
             // Result is a win.
             result = 1;
-
-        }else{
-            // Result is a loss.
-            result = 0;
         }
 
         // Update loss/tie/win values and store them in a temporary array.
         results[result] += 1;
     }while(loop_counter--);
 
-    // Update losses innerHTML.
-    document.getElementById('losses').innerHTML =
-      parseInt(
-        document.getElementById('losses').innerHTML,
-        10
-      ) + results[0];
-
-    // Update ties innerHTML.
-    document.getElementById('ties').innerHTML =
-      parseInt(
-        document.getElementById('ties').innerHTML,
-        10
-      ) + results[2];
-
-    // Update wins innerHTML.
-    document.getElementById('wins').innerHTML =
-      parseInt(
-        document.getElementById('wins').innerHTML,
-        10
-      ) + results[1];
+    losses += results[0];
+    ties += results[2];
+    wins += results[1];
 
     // Create result strings.
     var paper = '<b>' + opponent_plays[1] + '</b> papers (';
@@ -77,29 +64,33 @@ function play(selected){
     var scissors = '<b>' + opponent_plays[2] + '</b> scissors (';
 
     if(selected === 0){
-        paper += results[0] + ' losses)';
-        rock += results[2] + ' ties)';
-        scissors += results[1] + ' wins)';
+        paper += 'losses) ' + percent(results[0], repeat);
+        rock += 'ties) ' + percent(results[2], repeat);
+        scissors += 'wins) ' + percent(results[1], repeat);
 
     }else if(selected === 1){
-        paper += results[2] + ' ties)';
-        rock += results[1] + ' wins)';
-        scissors += results[0] + ' losses)';
+        paper += 'ties) ' + percent(results[2], repeat);
+        rock += 'wins) ' + percent(results[1], repeat);
+        scissors += 'losses) ' + percent(results[0], repeat);
 
     }else{
-        paper += results[1] + ' wins)';
-        rock += results[0] + ' losses)';
-        scissors += results[2] + ' ties)';
+        paper += 'wins) ' + percent(results[1], repeat);
+        rock += 'losses) ' + percent(results[0], repeat);
+        scissors += 'ties) ' + percent(results[2], repeat);
     }
 
-    // display game information, limiting information for multiple games played
-    document.getElementById('result').innerHTML = 'You played '
+    // Display game information.
+    document.getElementById('opponent').innerHTML = 'You played '
       + ['rock', 'paper', 'scissors',][selected]
       + ' <b>' + repeat + '</b> times.<br>'
       + 'Your opponent played:<br>'
         + rock + '<br>'
         + paper + '<br>'
         + scissors;
+    document.getElementById('player').innerHTML =
+      '<b>' + losses + '</b> losses (' + percent(losses, total) + ')<br>'
+        + '<b>' + ties + '</b> ties (' + percent(ties, total) + ')<br>'
+        + '<b>' + wins + '</b> wins (' + percent(wins, total) + ')';
 }
 
 function reset(){
@@ -107,21 +98,21 @@ function reset(){
         return;
     }
 
-    var ids = {
-      'losses': 0,
-      'result': '',
-      'ties': 0,
-      'wins': 0,
-    };
-    for(var id in ids){
-        document.getElementById(id).innerHTML = ids[id];
-    }
+    document.getElementById('opponent').innerHTML = '';
+    document.getElementById('player').innerHTML = '';
+
+    losses = 0;
+    ties = 0;
+    total = 0;
+    wins = 0;
 }
 
+var losses = 0;
 var opponent_choice = 0;
-var repeat = 0;
-var result = 0;
 var selected = 0;
+var ties = 0;
+var total = 0;
+var wins = 0;
 
 window.onkeydown = function(e){
     var key = e.keyCode || e.which;
