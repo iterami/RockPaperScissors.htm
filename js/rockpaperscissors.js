@@ -114,19 +114,24 @@ var ties = 0;
 var total = 0;
 var wins = 0;
 
-window.onkeydown = function(e){
-    var key = e.keyCode || e.which;
-
-    // R: play rock.
-    if(key === 82){
-        play(0);
-
-    // P: play paper.
-    }else if(key === 80){
-        play(1);
-
-    // S: play scissors.
-    }else if(key === 83){
-        play(2);
-    }
+window.onload = function(e){
+    init_input(
+      {
+        80: {
+          'todo': function(){
+              play(1);
+          },
+        },
+        82: {
+          'todo': function(){
+              play(0);
+          },
+        },
+        83: {
+          'todo': function(){
+              play(2);
+          },
+        },
+      }
+    );
 };
