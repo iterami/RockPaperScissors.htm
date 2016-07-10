@@ -115,7 +115,7 @@ var total = 0;
 var wins = 0;
 
 window.onload = function(e){
-    init_input(
+    input_init(
       {
         80: {
           'todo': function(){
