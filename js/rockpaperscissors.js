@@ -5,6 +5,8 @@ function percent(value, max){
 }
 
 function play(selected){
+    settings_save();
+
     // Fetch how many games player wants to play.
     var repeat = parseInt(
       document.getElementById('repeat').value,
@@ -35,7 +37,7 @@ function play(selected){
         var result = 0;
 
         // Generate a random number (0, 1, or 2).
-        opponent_choice = Math.floor(Math.random() * 3);
+        opponent_choice = random_integer(3);
         opponent_plays[opponent_choice] += 1;
 
         // Determine the result of the game.
@@ -134,4 +136,12 @@ window.onload = function(e){
         },
       }
     );
+    settings_init(
+      'RockPaperScissors.htm-',
+      {
+        'repeat': 1,
+      }
+    );
+
+    settings_update();
 };
