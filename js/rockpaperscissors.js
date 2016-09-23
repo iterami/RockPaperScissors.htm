@@ -1,7 +1,7 @@
 'use strict';
 
 function percent(value, max){
-    return ((value / max) * 100).toFixed(2) + '%';
+    return ((value / max) * 100).toFixed(7) + '%';
 }
 
 function play(selected){
@@ -12,13 +12,15 @@ function play(selected){
       document.getElementById('repeat').value,
       10
     );
-    total += repeat;
 
-    if(repeat < 1){
+    if(repeat < 1
+      || isNaN(repeat)){
         return;
     }
 
+
     // Keep track of results.
+    total += repeat;
     var opponent_plays = [
       0,
       0,
