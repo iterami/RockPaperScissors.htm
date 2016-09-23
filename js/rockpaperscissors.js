@@ -7,20 +7,17 @@ function percent(value, max){
 function play(selected){
     settings_save();
 
-    // Fetch how many games player wants to play.
+    // Check how many games player wants to play.
     var repeat = parseInt(
       document.getElementById('repeat').value,
       10
     );
-
     if(repeat < 1
       || isNaN(repeat)){
         return;
     }
 
-
     // Keep track of results.
-    total += repeat;
     var opponent_plays = [
       0,
       0,
@@ -31,6 +28,7 @@ function play(selected){
       0,
       0,
     ];
+    total += repeat;
 
     // Loop through the games.
     var loop_counter = repeat - 1;
@@ -42,15 +40,14 @@ function play(selected){
         opponent_choice = random_integer(3);
         opponent_plays[opponent_choice] += 1;
 
-        // Determine the result of the game.
+        // Check for ties.
         if(selected === opponent_choice){
-            // Result is a tie.
             result = 2;
 
+        // Check for wins.
         }else if((selected === 0 && opponent_choice === 2)
           || (selected === 1 && opponent_choice === 0)
           || (selected === 2 && opponent_choice === 1)){
-            // Result is a win.
             result = 1;
         }
 
