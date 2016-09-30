@@ -89,7 +89,8 @@ function play(selected){
         + paper + '<br>'
         + scissors;
     document.getElementById('player').innerHTML =
-      '<b>' + losses + '</b> losses (' + percent(losses, total) + ')<br>'
+      total + ' total games played<br>'
+        + '<b>' + losses + '</b> losses (' + percent(losses, total) + ')<br>'
         + '<b>' + ties + '</b> ties (' + percent(ties, total) + ')<br>'
         + '<b>' + wins + '</b> wins (' + percent(wins, total) + ')';
 }
