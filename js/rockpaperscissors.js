@@ -144,4 +144,15 @@ window.onload = function(e){
     );
 
     settings_update();
+
+    document.getElementById('paper').onclick = function(){
+        play(1);
+    };
+    document.getElementById('reset').onclick = reset;
+    document.getElementById('rock').onclick = function(){
+        play(0);
+    };
+    document.getElementById('scissors').onclick = function(){
+        play(2);
+    };
 };
