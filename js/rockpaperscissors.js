@@ -136,12 +136,12 @@ window.onload = function(e){
         },
       }
     );
-    settings_init(
-      'RockPaperScissors.htm-',
-      {
+    settings_init({
+      'prefix': 'RockPaperScissors.htm-',
+      'settings': {
         'repeat': 1,
-      }
-    );
+      },
+    });
 
     settings_update();
 
