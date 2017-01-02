@@ -119,8 +119,8 @@ var total = 0;
 var wins = 0;
 
 window.onload = function(e){
-    input_init(
-      {
+    input_init({
+      'keybinds': {
         80: {
           'todo': function(){
               play(1);
@@ -136,8 +136,8 @@ window.onload = function(e){
               play(2);
           },
         },
-      }
-    );
+      },
+    });
     settings_init({
       'prefix': 'RockPaperScissors.htm-',
       'settings': {
