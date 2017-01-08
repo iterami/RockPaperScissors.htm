@@ -62,9 +62,9 @@ function play(selected){
     wins += results[1];
 
     // Create result strings.
-    var paper = '<b>' + opponent_plays[1] + '</b> papers (';
-    var rock = '<b>' + opponent_plays[0] + '</b> rocks (';
-    var scissors = '<b>' + opponent_plays[2] + '</b> scissors (';
+    var paper = opponent_plays[1] + ' papers (';
+    var rock = opponent_plays[0] + ' rocks (';
+    var scissors = opponent_plays[2] + ' scissors (';
 
     if(selected === 0){
         paper += 'losses) ' + percent(results[0], repeat);
@@ -85,16 +85,16 @@ function play(selected){
     // Display game information.
     document.getElementById('opponent').innerHTML = 'You played '
       + ['rock', 'paper', 'scissors',][selected]
-      + ' <b>' + repeat + '</b> times.<br>'
+      + ' ' + repeat + ' times.<br>'
       + 'Your opponent played:<br>'
         + rock + '<br>'
         + paper + '<br>'
         + scissors;
     document.getElementById('player').innerHTML =
       total + ' total games played<br>'
-        + '<b>' + losses + '</b> losses (' + percent(losses, total) + ')<br>'
-        + '<b>' + ties + '</b> ties (' + percent(ties, total) + ')<br>'
-        + '<b>' + wins + '</b> wins (' + percent(wins, total) + ')';
+        + losses + ' losses (' + percent(losses, total) + ')<br>'
+        + ties + ' ties (' + percent(ties, total) + ')<br>'
+        + wins + ' wins (' + percent(wins, total) + ')';
 }
 
 function reset(){
