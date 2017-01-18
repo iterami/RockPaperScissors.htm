@@ -98,7 +98,7 @@ function play(selected){
 }
 
 function reset(){
-    if(!window.confirm('Reset scores?')){
+    if(!settings_reset()){
         return;
     }
 
