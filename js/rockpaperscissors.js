@@ -5,15 +5,11 @@ function percent(value, max){
 }
 
 function play(selected){
-    settings_save();
+    storage_save();
 
     // Check how many games player wants to play.
-    var repeat = parseInt(
-      document.getElementById('repeat').value,
-      10
-    );
-    if(repeat < 1
-      || isNaN(repeat)){
+    if(storage_data['repeat'] < 1
+      || isNaN(storage_data['repeat'])){
         return;
     }
 
@@ -28,10 +24,10 @@ function play(selected){
       0,
       0,
     ];
-    total += repeat;
+    total += storage_data['repeat'];
 
     // Loop through the games.
-    var loop_counter = repeat - 1;
+    var loop_counter = storage_data['repeat'] - 1;
     do{
         // Result is a loss by default.
         var result = 0;
@@ -67,25 +63,25 @@ function play(selected){
     var scissors = opponent_plays[2] + ' scissors (';
 
     if(selected === 0){
-        paper += 'losses) ' + percent(results[0], repeat);
-        rock += 'ties) ' + percent(results[2], repeat);
-        scissors += 'wins) ' + percent(results[1], repeat);
+        paper += 'losses) ' + percent(results[0], storage_data['repeat']);
+        rock += 'ties) ' + percent(results[2], storage_data['repeat']);
+        scissors += 'wins) ' + percent(results[1], storage_data['repeat']);
 
     }else if(selected === 1){
-        paper += 'ties) ' + percent(results[2], repeat);
-        rock += 'wins) ' + percent(results[1], repeat);
-        scissors += 'losses) ' + percent(results[0], repeat);
+        paper += 'ties) ' + percent(results[2], storage_data['repeat']);
+        rock += 'wins) ' + percent(results[1], storage_data['repeat']);
+        scissors += 'losses) ' + percent(results[0], storage_data['repeat']);
 
     }else{
-        paper += 'wins) ' + percent(results[1], repeat);
-        rock += 'losses) ' + percent(results[0], repeat);
-        scissors += 'ties) ' + percent(results[2], repeat);
+        paper += 'wins) ' + percent(results[1], storage_data['repeat']);
+        rock += 'losses) ' + percent(results[0], storage_data['repeat']);
+        scissors += 'ties) ' + percent(results[2], storage_data['repeat']);
     }
 
     // Display game information.
     document.getElementById('opponent').innerHTML = 'You played '
       + ['rock', 'paper', 'scissors',][selected]
-      + ' ' + repeat + ' times.<br>'
+      + ' ' + storage_data['repeat'] + ' times.<br>'
       + 'Your opponent played:<br>'
         + rock + '<br>'
         + paper + '<br>'
@@ -98,7 +94,7 @@ function play(selected){
 }
 
 function reset(){
-    if(!settings_reset()){
+    if(!storage_reset()){
         return;
     }
 
@@ -138,14 +134,14 @@ window.onload = function(e){
         },
       },
     });
-    settings_init({
-      'prefix': 'RockPaperScissors.htm-',
-      'settings': {
+    storage_init({
+      'data': {
         'repeat': 1,
       },
+      'prefix': 'RockPaperScissors.htm-',
     });
 
-    settings_update();
+    storage_update();
 
     document.getElementById('paper').onclick = function(){
         play(1);
