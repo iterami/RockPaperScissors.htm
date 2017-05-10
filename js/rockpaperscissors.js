@@ -33,7 +33,7 @@ function play(selected){
         var result = 0;
 
         // Generate a random number (0, 1, or 2).
-        opponent_choice = random_integer({
+        opponent_choice = core_random_integer({
           'max': 3,
         });
         opponent_plays[opponent_choice] += 1;
