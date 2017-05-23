@@ -115,7 +115,7 @@ var total = 0;
 var wins = 0;
 
 window.onload = function(e){
-    input_init({
+    core_input_init({
       'keybinds': {
         80: {
           'todo': function(){
