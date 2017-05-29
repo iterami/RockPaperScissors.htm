@@ -93,29 +93,8 @@ function play(selected){
         + wins + ' wins (' + percent(wins, total) + ')';
 }
 
-function reset(){
-    if(!core_storage_reset()){
-        return;
-    }
-
-    document.getElementById('opponent').innerHTML = '';
-    document.getElementById('player').innerHTML = '';
-
-    losses = 0;
-    ties = 0;
-    total = 0;
-    wins = 0;
-}
-
-var losses = 0;
-var opponent_choice = 0;
-var selected = 0;
-var ties = 0;
-var total = 0;
-var wins = 0;
-
-window.onload = function(e){
-    core_input_init({
+function repo_init(){
+    core_input_binds_add({
       'keybinds': {
         80: {
           'todo': function(){
@@ -153,4 +132,25 @@ window.onload = function(e){
     document.getElementById('scissors').onclick = function(){
         play(2);
     };
-};
+}
+
+function reset(){
+    if(!core_storage_reset()){
+        return;
+    }
+
+    document.getElementById('opponent').innerHTML = '';
+    document.getElementById('player').innerHTML = '';
+
+    losses = 0;
+    ties = 0;
+    total = 0;
+    wins = 0;
+}
+
+var losses = 0;
+var opponent_choice = 0;
+var selected = 0;
+var ties = 0;
+var total = 0;
+var wins = 0;
