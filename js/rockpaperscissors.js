@@ -94,11 +94,11 @@ function play(selected){
 }
 
 function repo_init(){
-    core_storage_init({
-      'data': {
+    core_repo_init({
+      'storage': {
         'repeat': 1,
       },
-      'prefix': 'RockPaperScissors.htm-',
+      'title': 'RockPaperScissors.htm',
     });
     core_events_bind({
       'keybinds': {
