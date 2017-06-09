@@ -95,12 +95,6 @@ function play(selected){
 
 function repo_init(){
     core_repo_init({
-      'storage': {
-        'repeat': 1,
-      },
-      'title': 'RockPaperScissors.htm',
-    });
-    core_events_bind({
       'keybinds': {
         80: {
           'todo': function(){
@@ -118,6 +112,10 @@ function repo_init(){
           },
         },
       },
+      'storage': {
+        'repeat': 1,
+      },
+      'title': 'RockPaperScissors.htm',
     });
 
     core_storage_update();
