@@ -115,6 +115,7 @@ function repo_init(){
       'storage': {
         'repeat': 1,
       },
+      'storage-menu': '<input id=repeat>Repeat',
       'title': 'RockPaperScissors.htm',
     });
 
@@ -123,27 +124,12 @@ function repo_init(){
     document.getElementById('paper').onclick = function(){
         play(1);
     };
-    document.getElementById('reset').onclick = reset;
     document.getElementById('rock').onclick = function(){
         play(0);
     };
     document.getElementById('scissors').onclick = function(){
         play(2);
     };
-}
-
-function reset(){
-    if(!core_storage_reset()){
-        return;
-    }
-
-    document.getElementById('opponent').innerHTML = '';
-    document.getElementById('player').innerHTML = '';
-
-    losses = 0;
-    ties = 0;
-    total = 0;
-    wins = 0;
 }
 
 var losses = 0;
