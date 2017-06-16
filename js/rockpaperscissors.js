@@ -115,7 +115,7 @@ function repo_init(){
       'storage': {
         'repeat': 1,
       },
-      'storage-menu': '<input id=repeat>Repeat',
+      'storage-menu': '<table><tr><td><input id=repeat><td>Repeat</table>',
       'title': 'RockPaperScissors.htm',
     });
 
