@@ -33,19 +33,24 @@ function play(selected){
         var result = 0;
 
         // Generate a random number (0, 1, or 2).
-        opponent_choice = core_random_integer({
+        var opponent_choice_int = core_random_integer({
           'max': 3,
         });
-        opponent_plays[opponent_choice] += 1;
+        opponent_choice = [
+          'rock',
+          'paper',
+          'scissors',
+        ][opponent_choice_int];
+        opponent_plays[opponent_choice_int] += 1;
 
         // Check for ties.
         if(selected === opponent_choice){
             result = 2;
 
         // Check for wins.
-        }else if((selected === 0 && opponent_choice === 2)
-          || (selected === 1 && opponent_choice === 0)
-          || (selected === 2 && opponent_choice === 1)){
+        }else if((selected === 'rock' && opponent_choice === 'scissors')
+          || (selected === 'paper' && opponent_choice === 'rock')
+          || (selected === 'scissors' && opponent_choice === 'paper')){
             result = 1;
         }
 
@@ -62,12 +67,12 @@ function play(selected){
     var rock = opponent_plays[0] + ' rocks (';
     var scissors = opponent_plays[2] + ' scissors (';
 
-    if(selected === 0){
+    if(selected === 'rock'){
         paper += 'losses) ' + percent(results[0], core_storage_data['repeat']);
         rock += 'ties) ' + percent(results[2], core_storage_data['repeat']);
         scissors += 'wins) ' + percent(results[1], core_storage_data['repeat']);
 
-    }else if(selected === 1){
+    }else if(selected === 'paper'){
         paper += 'ties) ' + percent(results[2], core_storage_data['repeat']);
         rock += 'wins) ' + percent(results[1], core_storage_data['repeat']);
         scissors += 'losses) ' + percent(results[0], core_storage_data['repeat']);
@@ -80,7 +85,7 @@ function play(selected){
 
     // Display game information.
     document.getElementById('opponent').innerHTML = 'You played '
-      + ['rock', 'paper', 'scissors',][selected]
+      + selected
       + ' ' + core_storage_data['repeat'] + ' times.<br>'
       + 'Your opponent played:<br>'
         + rock + '<br>'
@@ -121,20 +126,15 @@ function repo_init(){
 
     core_storage_update();
 
-    document.getElementById('paper').onclick = function(){
-        play(1);
-    };
-    document.getElementById('rock').onclick = function(){
-        play(0);
-    };
-    document.getElementById('scissors').onclick = function(){
-        play(2);
+    document.getElementById('paper').onclick =
+      document.getElementById('rock').onclick =
+      document.getElementById('scissors').onclick = function(){
+        play(this.id);
     };
 }
 
 var losses = 0;
 var opponent_choice = 0;
-var selected = 0;
 var ties = 0;
 var total = 0;
 var wins = 0;
