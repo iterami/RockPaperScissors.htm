@@ -2,6 +2,23 @@
 
 function repo_init(){
     core_repo_init({
+      'info-events': {
+        'paper': {
+          'todo': function(){
+              play('paper');
+          },
+        },
+        'rock': {
+          'todo': function(){
+              play('rock');
+          },
+        },
+        'scissors': {
+          'todo': function(){
+              play('scissors');
+          },
+        },
+      },
       'keybinds': {
         80: {
           'todo': function(){
@@ -25,12 +42,4 @@ function repo_init(){
       'storage-menu': '<table><tr><td><input id=repeat><td>Repeat</table>',
       'title': 'RockPaperScissors.htm',
     });
-
-    core_storage_update();
-
-    document.getElementById('paper').onclick =
-      document.getElementById('rock').onclick =
-      document.getElementById('scissors').onclick = function(){
-        play(this.id);
-    };
 }
