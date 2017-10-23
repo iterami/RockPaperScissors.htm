@@ -97,9 +97,3 @@ function play(selected){
         + ties + ' ties (' + percent(ties, total) + ')<br>'
         + wins + ' wins (' + percent(wins, total) + ')';
 }
-
-var losses = 0;
-var opponent_choice = 0;
-var ties = 0;
-var total = 0;
-var wins = 0;

@@ -2,6 +2,13 @@
 
 function repo_init(){
     core_repo_init({
+      'globals': {
+        'losses': 0,
+        'opponent_choice': 0,
+        'ties': 0,
+        'total': 0,
+        'wins': 0,
+      },
       'info-events': {
         'paper': {
           'todo': function(){
