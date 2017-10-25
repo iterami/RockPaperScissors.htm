@@ -2,29 +2,29 @@
 
 function repo_init(){
     core_repo_init({
+      'events': {
+        'paper': {
+          'onclick': function(){
+              play('paper');
+          },
+        },
+        'rock': {
+          'onclick': function(){
+              play('rock');
+          },
+        },
+        'scissors': {
+          'onclick': function(){
+              play('scissors');
+          },
+        },
+      },
       'globals': {
         'losses': 0,
         'opponent_choice': 0,
         'ties': 0,
         'total': 0,
         'wins': 0,
-      },
-      'info-events': {
-        'paper': {
-          'todo': function(){
-              play('paper');
-          },
-        },
-        'rock': {
-          'todo': function(){
-              play('rock');
-          },
-        },
-        'scissors': {
-          'todo': function(){
-              play('scissors');
-          },
-        },
       },
       'keybinds': {
         80: {
