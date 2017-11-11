@@ -27,19 +27,19 @@ function repo_init(){
         'wins': 0,
       },
       'keybinds': {
-        80: {
+        49: {
           'todo': function(){
-              play(1);
+              play('paper');
           },
         },
-        82: {
+        50: {
           'todo': function(){
-              play(0);
+              play('rock');
           },
         },
-        83: {
+        51: {
           'todo': function(){
-              play(2);
+              play('scissors');
           },
         },
       },
