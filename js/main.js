@@ -29,12 +29,12 @@ function repo_init(){
       'keybinds': {
         49: {
           'todo': function(){
-              play('paper');
+              play('rock');
           },
         },
         50: {
           'todo': function(){
-              play('rock');
+              play('paper');
           },
         },
         51: {
