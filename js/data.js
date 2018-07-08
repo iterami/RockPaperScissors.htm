@@ -14,12 +14,12 @@ function play(selected){
     }
 
     // Keep track of results.
-    var opponent_plays = [
+    let opponent_plays = [
       0,
       0,
       0,
     ];
-    var results = [
+    let results = [
       0,
       0,
       0,
@@ -27,13 +27,13 @@ function play(selected){
     total += core_storage_data['repeat'];
 
     // Loop through the games.
-    var loop_counter = core_storage_data['repeat'] - 1;
+    let loop_counter = core_storage_data['repeat'] - 1;
     do{
         // Result is a loss by default.
-        var result = 0;
+        let result = 0;
 
         // Generate a random number (0, 1, or 2).
-        var opponent_choice_int = core_random_integer({
+        let opponent_choice_int = core_random_integer({
           'max': 3,
         });
         opponent_choice = [
@@ -63,9 +63,9 @@ function play(selected){
     wins += results[1];
 
     // Create result strings.
-    var paper = opponent_plays[1] + ' papers (';
-    var rock = opponent_plays[0] + ' rocks (';
-    var scissors = opponent_plays[2] + ' scissors (';
+    let paper = opponent_plays[1] + ' papers (';
+    let rock = opponent_plays[0] + ' rocks (';
+    let scissors = opponent_plays[2] + ' scissors (';
 
     if(selected === 'rock'){
         paper += 'losses) ' + percent(results[0], core_storage_data['repeat']);
