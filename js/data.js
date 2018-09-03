@@ -63,9 +63,15 @@ function play(selected){
     wins += results[1];
 
     // Create result strings.
-    let paper = opponent_plays[1] + ' papers (';
-    let rock = opponent_plays[0] + ' rocks (';
-    let scissors = opponent_plays[2] + ' scissors (';
+    let paper = core_number_format({
+      'number': opponent_plays[1],
+    }) + ' papers (';
+    let rock = core_number_format({
+      'number': opponent_plays[0],
+    }) + ' rocks (';
+    let scissors = core_number_format({
+      'number': opponent_plays[2],
+    }) + ' scissors (';
 
     if(selected === 'rock'){
         paper += 'losses) ' + percent(results[0], core_storage_data['repeat']);
@@ -86,14 +92,23 @@ function play(selected){
     // Display game information.
     document.getElementById('opponent').innerHTML = 'You played '
       + selected
-      + ' ' + core_storage_data['repeat'] + ' times.<br>'
+      + ' ' + core_number_format({
+        'number': core_storage_data['repeat'],
+      }) + ' times.<br>'
       + 'Your opponent played:<br>'
         + rock + '<br>'
         + paper + '<br>'
         + scissors;
-    document.getElementById('player').innerHTML =
-      total + ' total games played<br>'
-        + losses + ' losses (' + percent(losses, total) + ')<br>'
-        + ties + ' ties (' + percent(ties, total) + ')<br>'
-        + wins + ' wins (' + percent(wins, total) + ')';
+    document.getElementById('player').innerHTML = core_number_format({
+      'number': total,
+    }) + ' total games played<br>'
+        + core_number_format({
+          'number': losses,
+        }) + ' losses (' + percent(losses, total) + ')<br>'
+        + core_number_format({
+          'number': ties,
+        }) + ' ties (' + percent(ties, total) + ')<br>'
+        + core_number_format({
+          'number': wins,
+        }) + ' wins (' + percent(wins, total) + ')';
 }
