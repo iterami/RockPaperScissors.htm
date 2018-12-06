@@ -90,25 +90,25 @@ function play(selected){
     }
 
     // Display game information.
-    document.getElementById('opponent').innerHTML = 'You played '
+    document.getElementById('results').innerHTML = 'You played '
       + selected
       + ' ' + core_number_format({
         'number': core_storage_data['repeat'],
       }) + ' times.<br>'
       + 'Your opponent played:<br>'
-        + rock + '<br>'
-        + paper + '<br>'
-        + scissors;
-    document.getElementById('player').innerHTML = core_number_format({
-      'number': total,
-    }) + ' total games played<br>'
-        + core_number_format({
-          'number': losses,
-        }) + ' losses (' + percent(losses, total) + ')<br>'
-        + core_number_format({
-          'number': ties,
-        }) + ' ties (' + percent(ties, total) + ')<br>'
-        + core_number_format({
-          'number': wins,
-        }) + ' wins (' + percent(wins, total) + ')';
+      + rock + '<br>'
+      + paper + '<br>'
+      + scissors + '<br>'
+      + core_number_format({
+        'number': total,
+      }) + ' total games played<br>'
+      + core_number_format({
+        'number': losses,
+      }) + ' losses (' + percent(losses, total) + ')<br>'
+      + core_number_format({
+        'number': ties,
+      }) + ' ties (' + percent(ties, total) + ')<br>'
+      + core_number_format({
+        'number': wins,
+      }) + ' wins (' + percent(wins, total) + ')';
 }
