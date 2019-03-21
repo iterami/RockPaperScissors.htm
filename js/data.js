@@ -1,7 +1,9 @@
 'use strict';
 
 function percent(value, max){
-    return ((value / max) * 100).toFixed(7) + '%';
+    return core_round({
+      'number': (value / max) * 100,
+    }) + '%';
 }
 
 function play(selected){
