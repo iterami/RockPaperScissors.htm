@@ -1,8 +1,10 @@
 'use strict';
 
 function percent(value, max){
-    return core_round({
-      'number': (value / max) * 100,
+    return core_number_format({
+      'number': core_round({
+        'number': (value / max) * 100,
+      }),
     }) + '%';
 }
 
@@ -66,12 +68,15 @@ function play(selected){
 
     // Create result strings.
     let paper = core_number_format({
+      'decimals-min': 0,
       'number': opponent_plays[1],
     }) + ' papers (';
     let rock = core_number_format({
+      'decimals-min': 0,
       'number': opponent_plays[0],
     }) + ' rocks (';
     let scissors = core_number_format({
+      'decimals-min': 0,
       'number': opponent_plays[2],
     }) + ' scissors (';
 
@@ -95,6 +100,7 @@ function play(selected){
     document.getElementById('results').innerHTML = 'You played '
       + selected
       + ' ' + core_number_format({
+        'decimals-min': 0,
         'number': core_storage_data['repeat'],
       }) + ' times.<br>'
       + 'Your opponent played:<br>'
@@ -102,15 +108,19 @@ function play(selected){
       + paper + '<br>'
       + scissors + '<br>'
       + core_number_format({
+        'decimals-min': 0,
         'number': total,
       }) + ' total games played<br>'
       + core_number_format({
+        'decimals-min': 0,
         'number': losses,
       }) + ' losses (' + percent(losses, total) + ')<br>'
       + core_number_format({
+        'decimals-min': 0,
         'number': ties,
       }) + ' ties (' + percent(ties, total) + ')<br>'
       + core_number_format({
+        'decimals-min': 0,
         'number': wins,
       }) + ' wins (' + percent(wins, total) + ')';
 }
