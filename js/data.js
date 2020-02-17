@@ -18,12 +18,12 @@ function play(selected){
     }
 
     // Keep track of results.
-    let opponent_plays = [
+    const opponent_plays = [
       0,
       0,
       0,
     ];
-    let results = [
+    const results = [
       0,
       0,
       0,
@@ -37,7 +37,7 @@ function play(selected){
         let result = 0;
 
         // Generate a random number (0, 1, or 2).
-        let opponent_choice_int = core_random_integer({
+        const opponent_choice_int = core_random_integer({
           'max': 3,
         });
         opponent_choice = [
