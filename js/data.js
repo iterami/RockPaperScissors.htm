@@ -13,7 +13,7 @@ function play(selected){
 
     // Check how many games player wants to play.
     if(core_storage_data['repeat'] < 1
-      || Number.isNaN(core_storage_data['repeat'])){
+      || globalThis.isNaN(core_storage_data['repeat'])){
         return;
     }
 
