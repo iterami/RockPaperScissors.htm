@@ -11,13 +11,11 @@ function percent(value, max){
 function play(selected){
     core_storage_save();
 
-    // Check how many games player wants to play.
     if(core_storage_data['repeat'] < 1
       || globalThis.isNaN(core_storage_data['repeat'])){
         return;
     }
 
-    // Keep track of results.
     const opponent_plays = [
       0,
       0,
@@ -30,13 +28,9 @@ function play(selected){
     ];
     total += core_storage_data['repeat'];
 
-    // Loop through the games.
     let loop_counter = core_storage_data['repeat'] - 1;
     do{
-        // Result is a loss by default.
         let result = 0;
-
-        // Generate a random number (0, 1, or 2).
         const opponent_choice_int = core_random_integer({
           'max': 3,
         });
@@ -47,18 +41,15 @@ function play(selected){
         ][opponent_choice_int];
         opponent_plays[opponent_choice_int] += 1;
 
-        // Check for ties.
         if(selected === opponent_choice){
             result = 2;
 
-        // Check for wins.
         }else if((selected === 'rock' && opponent_choice === 'scissors')
           || (selected === 'paper' && opponent_choice === 'rock')
           || (selected === 'scissors' && opponent_choice === 'paper')){
             result = 1;
         }
 
-        // Update loss/tie/win values and store them in a temporary array.
         results[result] += 1;
     }while(loop_counter--);
 
@@ -66,7 +57,6 @@ function play(selected){
     ties += results[2];
     wins += results[1];
 
-    // Create result strings.
     let paper = core_number_format({
       'decimals-min': 0,
       'number': opponent_plays[1],
@@ -96,7 +86,6 @@ function play(selected){
         scissors += 'ties) ' + percent(results[2], core_storage_data['repeat']);
     }
 
-    // Display game information.
     document.getElementById('results').innerHTML = 'You played '
       + selected
       + ' ' + core_number_format({
