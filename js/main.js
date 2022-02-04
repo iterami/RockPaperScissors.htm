@@ -46,7 +46,7 @@ function repo_init(){
       'storage': {
         'repeat': 1,
       },
-      'storage-menu': '<table><tr><td><input id=repeat min=1 step=any type=number><td>Repeat</table>',
+      'storage-menu': '<table><tr><td><input class=mini id=repeat min=1 step=any type=number><td>Repeat</table>',
       'title': 'RockPaperScissors.htm',
     });
 }
