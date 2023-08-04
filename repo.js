@@ -16,7 +16,7 @@ function play(selected){
     });
 
     if(core_storage_data['repeat'] < 1
-      || globalThis.isNaN(core_storage_data['repeat'])){
+      || Number.isNaN(core_storage_data['repeat'])){
         return;
     }
 
