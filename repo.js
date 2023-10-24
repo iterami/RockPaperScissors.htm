@@ -145,17 +145,17 @@ function repo_init(){
         'wins': 0,
       },
       'keybinds': {
-        49: {
+        'Digit1': {
           'todo': function(){
               play('rock');
           },
         },
-        50: {
+        'Digit2': {
           'todo': function(){
               play('paper');
           },
         },
-        51: {
+        'Digit3': {
           'todo': function(){
               play('scissors');
           },
