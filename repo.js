@@ -9,11 +9,9 @@ function percent(value, max){
 }
 
 function play(selected){
-    core_storage_save({
-      'keys': [
-        'repeat',
-      ],
-    });
+    core_storage_save([
+      'repeat',
+    ]);
 
     if(core_storage_data['repeat'] < 1
       || Number.isNaN(core_storage_data['repeat'])){
