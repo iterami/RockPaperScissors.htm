@@ -88,7 +88,7 @@ function play(selected){
         scissors += 'ties) ' + percent(results[2], core_storage_data['repeat']);
     }
 
-    document.getElementById('results').innerHTML = 'You played '
+    core_elements['results'].innerHTML = 'You played '
       + selected
       + ' ' + core_number_format({
         'decimals-min': 0,
@@ -164,5 +164,8 @@ function repo_init(){
       },
       'storage-menu': '<table><tr><td><input class=mini id=repeat min=1 step=any type=number><td>Repeat</table>',
       'title': 'RockPaperScissors.htm',
+      'ui-elements': [
+        'results',
+      ],
     });
 }
