@@ -13,8 +13,9 @@ function play(selected){
       'repeat',
     ]);
 
-    if(core_storage_data['repeat'] < 1
-      || globalThis.isNaN(core_storage_data['repeat'])){
+    const repeat = Math.floor(core_storage_data['repeat']);
+    if(repeat < 1
+      || globalThis.isNaN(repeat)){
         return;
     }
 
@@ -28,9 +29,9 @@ function play(selected){
       0,
       0,
     ];
-    total += core_storage_data['repeat'];
+    total += repeat;
 
-    let loop_counter = core_storage_data['repeat'] - 1;
+    let loop_counter = repeat - 1;
     do{
         let result = 0;
         const opponent_choice_int = core_random_integer({
@@ -73,26 +74,26 @@ function play(selected){
     }) + ' scissors (';
 
     if(selected === 'rock'){
-        paper += 'losses) ' + percent(results[0], core_storage_data['repeat']);
-        rock += 'ties) ' + percent(results[2], core_storage_data['repeat']);
-        scissors += 'wins) ' + percent(results[1], core_storage_data['repeat']);
+        paper += 'losses) ' + percent(results[0], repeat);
+        rock += 'ties) ' + percent(results[2], repeat);
+        scissors += 'wins) ' + percent(results[1], repeat);
 
     }else if(selected === 'paper'){
-        paper += 'ties) ' + percent(results[2], core_storage_data['repeat']);
-        rock += 'wins) ' + percent(results[1], core_storage_data['repeat']);
-        scissors += 'losses) ' + percent(results[0], core_storage_data['repeat']);
+        paper += 'ties) ' + percent(results[2], repeat);
+        rock += 'wins) ' + percent(results[1], repeat);
+        scissors += 'losses) ' + percent(results[0], repeat);
 
     }else{
-        paper += 'wins) ' + percent(results[1], core_storage_data['repeat']);
-        rock += 'losses) ' + percent(results[0], core_storage_data['repeat']);
-        scissors += 'ties) ' + percent(results[2], core_storage_data['repeat']);
+        paper += 'wins) ' + percent(results[1], repeat);
+        rock += 'losses) ' + percent(results[0], repeat);
+        scissors += 'ties) ' + percent(results[2], repeat);
     }
 
     core_elements['results'].innerHTML = 'You played '
       + selected
       + ' ' + core_number_format({
         'decimals-min': 0,
-        'number': core_storage_data['repeat'],
+        'number': repeat,
       }) + ' times.<br>'
       + 'Your opponent played:<br>'
       + rock + '<br>'
@@ -162,7 +163,7 @@ function repo_init(){
       'storage': {
         'repeat': 1,
       },
-      'storage-menu': '<table><tr><td><input class=mini id=repeat min=1 step=any type=number><td>Repeat</table>',
+      'storage-menu': '<table><tr><td><input class=mini id=repeat min=1 step=1 type=number><td>Repeat</table>',
       'title': 'RockPaperScissors.htm',
       'ui-elements': [
         'results',
