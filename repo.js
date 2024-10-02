@@ -63,30 +63,30 @@ function play(selected){
     let paper = core_number_format({
       'decimals-min': 0,
       'number': opponent_plays[1],
-    }) + ' papers (';
+    }) + ' papers<td>';
     let rock = core_number_format({
       'decimals-min': 0,
       'number': opponent_plays[0],
-    }) + ' rocks (';
+    }) + ' rocks<td>';
     let scissors = core_number_format({
       'decimals-min': 0,
       'number': opponent_plays[2],
-    }) + ' scissors (';
+    }) + ' scissors<td>';
 
     if(selected === 'rock'){
-        paper += 'losses) ' + percent(results[0], repeat);
-        rock += 'ties) ' + percent(results[2], repeat);
-        scissors += 'wins) ' + percent(results[1], repeat);
+        paper += 'losses<td>' + percent(results[0], repeat);
+        rock += 'ties<td>' + percent(results[2], repeat);
+        scissors += 'wins<td>' + percent(results[1], repeat);
 
     }else if(selected === 'paper'){
-        paper += 'ties) ' + percent(results[2], repeat);
-        rock += 'wins) ' + percent(results[1], repeat);
-        scissors += 'losses) ' + percent(results[0], repeat);
+        paper += 'ties<td>' + percent(results[2], repeat);
+        rock += 'wins<td>' + percent(results[1], repeat);
+        scissors += 'losses<td>' + percent(results[0], repeat);
 
     }else{
-        paper += 'wins) ' + percent(results[1], repeat);
-        rock += 'losses) ' + percent(results[0], repeat);
-        scissors += 'ties) ' + percent(results[2], repeat);
+        paper += 'wins<td>' + percent(results[1], repeat);
+        rock += 'losses<td>' + percent(results[0], repeat);
+        scissors += 'ties<td>' + percent(results[2], repeat);
     }
 
     core_elements['results'].innerHTML = 'You played '
@@ -95,26 +95,25 @@ function play(selected){
         'decimals-min': 0,
         'number': repeat,
       }) + ' times.<br>'
-      + 'Your opponent played:<br>'
-      + rock + '<br>'
-      + paper + '<br>'
-      + scissors + '<br>'
+      + 'Your opponent played:<table><tr><td>' + rock
+      + '<tr><td>' + paper
+      + '<tr><td>' + scissors + '</table>'
       + core_number_format({
         'decimals-min': 0,
         'number': total,
-      }) + ' total games played<br>'
+      }) + ' total games played<table><tr><td>'
       + core_number_format({
         'decimals-min': 0,
         'number': losses,
-      }) + ' losses (' + percent(losses, total) + ')<br>'
+      }) + ' losses<td>' + percent(losses, total) + '<tr><td>'
       + core_number_format({
         'decimals-min': 0,
         'number': ties,
-      }) + ' ties (' + percent(ties, total) + ')<br>'
+      }) + ' ties<td>' + percent(ties, total) + '<tr><td>'
       + core_number_format({
         'decimals-min': 0,
         'number': wins,
-      }) + ' wins (' + percent(wins, total) + ')';
+      }) + ' wins<td>' + percent(wins, total) + '</table>';
 }
 
 function repo_init(){
