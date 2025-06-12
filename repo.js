@@ -34,9 +34,7 @@ function play(selected){
     let loop_counter = repeat - 1;
     do{
         let result = 0;
-        const opponent_choice_int = core_random_integer({
-          'max': 3,
-        });
+        const opponent_choice_int = core_random_integer(3);
         opponent_choice = [
           'rock',
           'paper',
