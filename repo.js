@@ -13,22 +13,14 @@ function play(selected){
       'repeat',
     ]);
 
-    const repeat = Math.floor(core_storage_data['repeat']);
+    const repeat = Math.floor(core_storage_data.repeat);
     if(repeat < 1
       || globalThis.isNaN(repeat)){
         return;
     }
 
-    const opponent_plays = [
-      0,
-      0,
-      0,
-    ];
-    const results = [
-      0,
-      0,
-      0,
-    ];
+    const opponent_plays = [0, 0, 0,];
+    const results = [0, 0, 0,];
     total += repeat;
 
     let loop_counter = repeat - 1;
@@ -87,7 +79,7 @@ function play(selected){
         scissors += 'ties<td>' + percent(results[2], repeat);
     }
 
-    core_elements['results'].innerHTML = 'You played '
+    core_elements.results.innerHTML = 'You played '
       + selected
       + ' ' + core_number_format({
         'decimals-min': 0,
