@@ -154,7 +154,7 @@ function repo_init(){
       },
       'storage-menu': '<table><tr><td><input class=mini id=repeat min=1 step=1 type=number><td>Repeat</table>',
       'title': 'RockPaperScissors.htm',
-      'ui-elements': [
+      'ui_elements': [
         'results',
       ],
     });
