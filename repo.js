@@ -51,15 +51,12 @@ function play(selected){
     wins += results[1];
 
     let paper = core_number_format({
-      'decimals_min': 0,
       'number': opponent_plays[1],
     }) + ' papers<td>';
     let rock = core_number_format({
-      'decimals_min': 0,
       'number': opponent_plays[0],
     }) + ' rocks<td>';
     let scissors = core_number_format({
-      'decimals_min': 0,
       'number': opponent_plays[2],
     }) + ' scissors<td>';
 
@@ -82,26 +79,21 @@ function play(selected){
     core_elements.results.innerHTML = 'You played '
       + selected
       + ' ' + core_number_format({
-        'decimals_min': 0,
         'number': repeat,
       }) + ' times.<br>'
       + 'Your opponent played:<table><tr><td>' + rock
       + '<tr><td>' + paper
       + '<tr><td>' + scissors + '</table>'
       + core_number_format({
-        'decimals_min': 0,
         'number': total,
       }) + ' total games played<table><tr><td>'
       + core_number_format({
-        'decimals_min': 0,
         'number': losses,
       }) + ' losses<td>' + percent(losses, total) + '<tr><td>'
       + core_number_format({
-        'decimals_min': 0,
         'number': ties,
       }) + ' ties<td>' + percent(ties, total) + '<tr><td>'
       + core_number_format({
-        'decimals_min': 0,
         'number': wins,
       }) + ' wins<td>' + percent(wins, total) + '</table>';
 }
