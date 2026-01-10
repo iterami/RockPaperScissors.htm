@@ -126,17 +126,17 @@ function repo_init(){
       },
       'keybinds': {
         'Digit1': {
-          'todo': function(){
+          'down': function(){
               play('rock');
           },
         },
         'Digit2': {
-          'todo': function(){
+          'down': function(){
               play('paper');
           },
         },
         'Digit3': {
-          'todo': function(){
+          'down': function(){
               play('scissors');
           },
         },
