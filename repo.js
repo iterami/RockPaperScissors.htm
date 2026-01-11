@@ -9,10 +9,6 @@ function percent(value, max){
 }
 
 function play(selected){
-    core_storage_save([
-      'repeat',
-    ]);
-
     const repeat = Math.floor(core_storage_data.repeat);
     if(repeat < 1
       || globalThis.isNaN(repeat)){
