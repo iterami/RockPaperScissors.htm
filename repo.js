@@ -19,8 +19,7 @@ function play(selected){
     const results = [0, 0, 0,];
     total += repeat;
 
-    let loop_counter = repeat - 1;
-    do{
+    for(let i = 0; i < repeat; i++){
         let result = 0;
         const opponent_choice_int = core_random_integer(3);
         opponent_choice = [
@@ -40,7 +39,7 @@ function play(selected){
         }
 
         results[result] += 1;
-    }while(loop_counter--);
+    }
 
     losses += results[0];
     ties += results[2];
