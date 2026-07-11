@@ -15,8 +15,8 @@ function play(selected){
         return;
     }
 
-    const opponent_plays = [0, 0, 0,];
-    const results = [0, 0, 0,];
+    const opponent_plays = [0, 0, 0];
+    const results = [0, 0, 0];
     total += repeat;
 
     for(let i = 0; i < repeat; i++){
@@ -141,8 +141,6 @@ function repo_init(){
       },
       'storage_menu': '<table><tr><td><input class=mini id=repeat min=1 step=1 type=number><td>Repeat</table>',
       'title': 'RockPaperScissors.htm',
-      'ui_elements': [
-        'results',
-      ],
+      'ui_elements': ['results'],
     });
 }
